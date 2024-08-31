@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Renk kodları
+pembe='\033[1;35m'
+kirmizi='\033[1;31m'
+reset='\033[0m'
+
+meyveler=(armut kiraz elma)
+echo -e "${pembe}Ayça Manava Hoş Geldiniz${reset}"
+sleep 1
+echo 'Elimizde olan meyveler sırasıyla;'
+
+for meyve in "${meyveler[@]}"
+do
+    echo "Meyve: $meyve"
+    sleep 2
+done
+
+read -p 'Ne almak istersiniz: ' secilen_meyve
+read -p 'Kaç kilo istersiniz: ' kilo
+read -p 'Kese kağıdı mı istersiniz yoksa plastik poşet mi? ' poset
+
+if [[ $poset == "kese kağıdı" ]]; then
+    echo "Buyrun, $kilo kilo $secilen_meyve, kese kağıdında."
+elif [[ $poset == "plastik poşet" ]]; then
+    echo "Buyrun, $kilo kilo $secilen_meyve, plastik poşette."
+else
+    echo -e "${kirmizi}Poşet tercihiniz anlaşılmadı. Lütfen 'kese kağıdı' veya 'plastik poşet' yazın.${reset}"
+fi
